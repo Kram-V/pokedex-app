@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
-import { PokemonListContext } from "../contexts/PokemonListContext";
 import PokemonList from "./PokemonList";
+import PokemonListContext from "../contexts/PokemonListContext";
 
 const Homepage = () => {
-  const pokemons = useContext(PokemonListContext);
+  const { pokemons } = useContext(PokemonListContext);
+
+  console.log("POKEMONS", pokemons);
 
   return (
     <div className="pb-5">

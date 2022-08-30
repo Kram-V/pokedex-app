@@ -1,30 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  BrowserRouter,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import PokemonList from "./components/Homepage";
 import PokemonDetails from "./components/PokemonDetails";
-import { PokemonListContext } from "./contexts/PokemonListContext";
-import axios from "axios";
+import { PokemonListProvider } from "./contexts/PokemonListContext";
 
 const App = () => {
-  const [pokemons, setPokemons] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("https://pokeapi.co/api/v2/pokemon")
-      .then((data) => setPokemons(data.data.results))
-      .catch((e) => console.log(e));
-  }, []);
-
   return (
-    <PokemonListContext.Provider value={pokemons}>
-      <BrowserRouter>
+    <PokemonListProvider>
+      <Router>
         <Navbar />
         <div className="container app">
           <Routes>
@@ -32,8 +17,8 @@ const App = () => {
             <Route path="/:name" element={<PokemonDetails />} />
           </Routes>
         </div>
-      </BrowserRouter>
-    </PokemonListContext.Provider>
+      </Router>
+    </PokemonListProvider>
   );
 };
 

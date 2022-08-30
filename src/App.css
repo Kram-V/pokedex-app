@@ -52,3 +52,7 @@
 .pokemon-details {
   font-size: 55px;
 }
+
+.pokemon-details-container {
+  height: 100%;
+}

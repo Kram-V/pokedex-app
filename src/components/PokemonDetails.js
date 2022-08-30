@@ -11,6 +11,17 @@ const PokemonDetails = () => {
 
   const { name } = useParams();
 
+  const palindrome = (name) => {
+    const pokemonName = name;
+    const reversedName = name.split("").reverse().join("");
+
+    if (pokemonName == reversedName) return true;
+
+    return false;
+  };
+
+  console.log("PALINDROME", palindrome("eevee"));
+
   useEffect(() => {
     axios
       .get(`https://pokeapi.co/api/v2/pokemon/${name}`)
@@ -31,13 +42,16 @@ const PokemonDetails = () => {
   console.log("ABILITIES", pokemonAbilities);
 
   return (
-    <div>
+    <div className="pokemon-details-container">
       <h1 className="text-center mt-5">
         <b className="pokemon-details">POKEMON DETAILS</b>
       </h1>
 
       <div className="row">
-        <div className="col-md-4 mt-5" style={{ width: "300px" }}>
+        <div
+          className="col-md-4 mt-5"
+          style={{ width: "300px", height: "300px" }}
+        >
           <div className="img-container">
             <img
               src={`${pokemon.sprites?.front_shiny}`}
