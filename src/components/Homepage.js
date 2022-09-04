@@ -10,7 +10,7 @@ const Homepage = () => {
   return (
     <div className="pb-5">
       <h1 className="text-center mt-5">
-        <b className="pokemon-list">POKEMONS LIST</b>
+        <b className="pokemon-list">POKEMON LIST</b>
       </h1>
 
       <div className="row">
